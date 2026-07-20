@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NagarSeva AI Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<div class="dashboard-card">
+
+<h1>🏙️ NagarSeva AI Dashboard</h1>
+
+<h2>Complaint Statistics</h2>
+
+<div class="stats-container">
+
+<div class="stat-box">
+
+<i class="fa-solid fa-file-circle-exclamation"></i>
+
+<h3>Total</h3>
+
+<h2>{{ total }}</h2>
+
+</div>
+
+<div class="stat-box">
+
+<i class="fa-solid fa-hourglass-half"></i>
+
+<h3>Pending</h3>
+
+<h2>{{ pending }}</h2>
+
+</div>
+
+<div class="stat-box">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h3>Resolved</h3>
+
+<h2>{{ resolved }}</h2>
+
+</div>
+
+</div>
+
+<h2>Recent Complaints</h2>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Issue</th>
+<th>Location</th>
+<th>Description</th>
+<th>Image</th>
+<th>Status</th>
+
+</tr>
+
+{% if complaints %}
+
+{% for complaint in complaints %}
+
+<tr>
+
+<td>{{ complaint[0] }}</td>
+
+<td>{{ complaint[1] }}</td>
+
+<td>{{ complaint[2] }}</td>
+
+<td>{{ complaint[3] }}</td>
+
+<td>{{ complaint[4] }}</td>
+
+<td>{{ complaint[5] }}</td>
+
+<td>
+
+{% if complaint[6] %}
+
+<img src="{{ url_for('static', filename='uploads/' + complaint[6]) }}"
+width="120">
+
+{% else %}
+
+No Image
+
+{% endif %}
+
+</td>
+
+<td>
+
+<span class="status">
+
+{{ complaint[7] }}
+
+</span>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+{% else %}
+
+<tr>
+
+<td colspan="8">
+
+No complaints found.
+
+</td>
+
+</tr>
+
+{% endif %}
+
+</table>
+
+</div>
+
+<div class="buttons">
+
+<a href="{{ url_for('report') }}">
+
+<button>
+
+<i class="fa-solid fa-plus"></i>
+
+Report Complaint
+
+</button>
+
+</a>
+
+<a href="{{ url_for('track') }}">
+
+<button>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Track Complaint
+
+</button>
+
+</a>
+
+<a href="{{ url_for('home') }}">
+
+<button>
+
+<i class="fa-solid fa-house"></i>
+
+Home
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Issue - NagarSeva AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+
+<div class="hero">
+
+    <div class="card">
+
+        <h1>🏙️ NagarSeva AI</h1>
+
+        <h2>Report a Civic Issue</h2>
+
+        <p>Help make your city cleaner and safer by reporting civic problems.</p>
+
+        <form action="{{ url_for('report') }}" method="POST" enctype="multipart/form-data">
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="name" placeholder="Full Name" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <select name="issue" required>
+                    <option value="">Select Issue Type</option>
+                    <option>Pothole</option>
+                    <option>Broken Street Light</option>
+                    <option>Garbage Dump</option>
+                    <option>Blocked Drain</option>
+                    <option>Water Leakage</option>
+                    <option>Illegal Dumping</option>
+                    <option>Unsafe Area</option>
+                    <option>Footpath Encroachment</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" name="location" placeholder="Location" required>
+            </div>
+
+            <div class="input-box">
+                <textarea
+                    name="description"
+                    rows="5"
+                    placeholder="Describe the issue..."
+                    required></textarea>
+            </div>
+
+            <div class="input-box">
+                <label><i class="fa-solid fa-image"></i> Upload Complaint Image</label>
+                <input type="file" name="photo">
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-paper-plane"></i>
+                Submit Complaint
+            </button>
+
+        </form>
+
+        <br>
+
+        <a class="back-btn" href="{{ url_for('home') }}">
+            <i class="fa-solid fa-house"></i>
+            Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Complaint - NagarSeva AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+
+<div class="hero">
+
+    <div class="card">
+
+        <h1>🏙️ NagarSeva AI</h1>
+
+        <h2>📍 Track Your Complaint</h2>
+
+        <p>Enter your Complaint ID to check the latest status of your complaint.</p>
+
+        <form action="{{ url_for('track') }}" method="POST">
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="number"
+                    name="complaint_id"
+                    placeholder="Enter Complaint ID"
+                    required>
+
+            </div>
+
+            <br>
+
+            <button type="submit">
+                <i class="fa-solid fa-location-dot"></i>
+                Track Complaint
+            </button>
+
+        </form>
+
+        <br>
+
+        {% if complaint %}
+
+        <h2>Complaint Details</h2>
+
+        <table>
+
+            <tr>
+                <th>Complaint ID</th>
+                <td>{{ complaint[0] }}</td>
+            </tr>
+
+            <tr>
+                <th>Name</th>
+                <td>{{ complaint[1] }}</td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>{{ complaint[2] }}</td>
+            </tr>
+
+            <tr>
+                <th>Issue Type</th>
+                <td>{{ complaint[3] }}</td>
+            </tr>
+
+            <tr>
+                <th>Location</th>
+                <td>{{ complaint[4] }}</td>
+            </tr>
+
+            <tr>
+                <th>Description</th>
+                <td>{{ complaint[5] }}</td>
+            </tr>
+
+            <tr>
+                <th>Image</th>
+                <td>
+                    {% if complaint[6] %}
+                    <img src="{{ url_for('static', filename='uploads/' + complaint[6]) }}"
+                         width="180"
+                         alt="Complaint Image">
+                    {% else %}
+                    No Image
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Status</th>
+                <td>
+                    <span class="status">
+                        {{ complaint[7] }}
+                    </span>
+                </td>
+            </tr>
+
+        </table>
+
+        {% elif request.method == "POST" %}
+
+        <h3>❌ No complaint found with this Complaint ID.</h3>
+
+        {% endif %}
+
+        <br>
+
+        <div class="buttons">
+
+            <a href="{{ url_for('dashboard') }}">
+                <button type="button">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Dashboard
+                </button>
+            </a>
+
+            <a href="{{ url_for('home') }}">
+                <button type="button">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
