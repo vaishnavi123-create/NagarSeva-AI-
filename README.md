@@ -90,6 +90,7 @@ Complaint Analytics
 Multi-language Support
 Mobile Application
 Cloud Deployment
+
 📁 Project Structure
 NagarSeva-AI/
 │
@@ -111,12 +112,14 @@ NagarSeva-AI/
 ├── nagarseva.db
 ├── requirements.txt
 └── README.md
+
 🎯 Objectives
 Simplify civic issue reporting
 Reduce manual complaint handling
 Improve transparency
 Enable digital complaint tracking
 Support smarter governance
+
 📌 Project Highlights
 Flask-based Web Application
 Secure User Authentication
@@ -125,6 +128,7 @@ Image Upload Support
 SQLite Database
 Responsive UI
 GitHub Version Control
+
 📄 Resume Description (2–3 lines)
 
 NagarSeva AI is a Flask-based civic complaint management web application that enables users to register, log in, submit complaints with images, and track complaint status. The project uses Python, Flask, SQLite, HTML, CSS, and JavaScript to provide a user-friendly platform for digital complaint management.
